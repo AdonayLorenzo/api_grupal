@@ -40,4 +40,6 @@ public class StoryboardService {
         storyboardRepository.deleteById(id); // Usamos el repositorio directamente
     }
 
+   
+
 }

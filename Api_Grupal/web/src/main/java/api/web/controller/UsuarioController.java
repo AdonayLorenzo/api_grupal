@@ -2,6 +2,7 @@ package api.web.controller;
 
 import api.web.DTO.LoginRequest;
 import api.web.DTO.LoginResponse;
+import api.web.JwtUtil;
 import api.web.entity.Usuario;
 import api.web.service.UsuarioService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,10 +26,12 @@ import java.util.Optional;
 public class UsuarioController {
 
     private final UsuarioService usuarioService;
+    private final JwtUtil jwtUtil;
 
     @Autowired
-    public UsuarioController(UsuarioService usuarioService) {
+    public UsuarioController(UsuarioService usuarioService, JwtUtil jwtUtil) {
         this.usuarioService = usuarioService;
+        this.jwtUtil = jwtUtil;
     }
 
     // Obtener todos los usuarios
@@ -56,8 +59,8 @@ public class UsuarioController {
             return ResponseEntity.status(401).body("Invalid email or password");
         }
 
-        // Simulación de generación de un token (aquí puedes integrar JWT u otro método)
-        String token = "fake-jwt-token-for-" + usuario.getId_usuario();
+        // Generar token JWT
+        String token = jwtUtil.generateToken(usuario);
 
         LoginResponse response = new LoginResponse(token);
         return ResponseEntity.ok(response);
@@ -86,9 +89,9 @@ public class UsuarioController {
     }
 
     // Obtener un usuario por ID
-    @GetMapping("/{id}")
-    public ResponseEntity<Usuario> obtenerPorId(@PathVariable Long id) {
-        Optional<Usuario> usuario = usuarioService.obtenerPorId(id);
+    @GetMapping("/{token}")
+    public ResponseEntity<Usuario> obtenerPorId(@PathVariable String token) {
+        Optional<Usuario> usuario = usuarioService.obtenerPorId(jwtUtil.extractUserId(token));
         return usuario.map(ResponseEntity::ok)
                 .orElseGet(() -> ResponseEntity.status(HttpStatus.NOT_FOUND).body(null)); // 404 si no existe
     }

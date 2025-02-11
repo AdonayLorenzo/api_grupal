@@ -108,5 +108,6 @@ public class Usuario {
         this.Fecha_N = Fecha_N;
     }
 
+    public Long getId_proyecto() { return id_usuario;}
 
 }

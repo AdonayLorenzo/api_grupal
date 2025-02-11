@@ -32,11 +32,6 @@ public class ProyectoController {
         return ResponseEntity.ok(usuarios);
     }
 
-
-
-
-
-
     // Crear un nuevo proyecto con validación de los datos entrantes
     @PostMapping
     public ResponseEntity<Object> crearProyecto(@Valid @RequestBody Proyecto proyecto, BindingResult bindingResult) {

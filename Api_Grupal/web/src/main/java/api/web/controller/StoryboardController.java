@@ -34,6 +34,8 @@ public class StoryboardController {
         return ResponseEntity.ok(storyboard);
     }
 
+
+
     // Crear un nuevo storyboard con validación de los datos entrantes
     @PostMapping
     public ResponseEntity<Object> crearLocalizacion(@Valid @RequestBody Storyboard storyboard, BindingResult bindingResult) {

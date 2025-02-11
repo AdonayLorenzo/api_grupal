@@ -12,7 +12,6 @@ public class Storyboard {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id_storyboard;
 
-
     @Size(min = 0, max = 255, message = "La descripcion es muy larga")
     private String descripcion;
 
@@ -20,12 +19,12 @@ public class Storyboard {
     @Column(name = "imagen", columnDefinition = "LONGBLOB")
     private byte[] imagen;
 
-
-
     @ManyToOne
     @JoinColumn(name = "id_proyecto" , nullable = false)
     @JsonBackReference  // Evita la serialización infinita
     private Proyecto proyecto;
+
+
 
     //Getters and Setters
 
@@ -36,7 +35,6 @@ public class Storyboard {
     public void setId_localizacion(Long id_storyboard) {
         this.id_storyboard = id_storyboard;
     }
-
 
     public @Size(min = 0, max = 255, message = "La descripcion es muy larga") String getDescripcion() {
         return descripcion;
@@ -57,9 +55,11 @@ public class Storyboard {
     public Proyecto getProyecto() {
         return proyecto;
     }
+
     public void setProyecto(Proyecto proyecto) {
         this.proyecto = proyecto;
     }
+
 
 
 }
