@@ -21,7 +21,7 @@ import java.util.Optional;
 @RestController
 @RequestMapping("/api/usuarios")
 @Validated // Habilitar validaciones a nivel de clase
-@CrossOrigin(origins = "http://localhost:+6")
+@CrossOrigin(origins = "http://localhost:3000")
 public class UsuarioController {
 
     private final UsuarioService usuarioService;

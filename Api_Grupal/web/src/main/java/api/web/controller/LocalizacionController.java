@@ -17,7 +17,7 @@ import java.util.Optional;
 @RestController
 @RequestMapping("/api/localizacion")
 @Validated // Habilitar validaciones a nivel de clase
-@CrossOrigin(origins = "http://localhost:+6")
+@CrossOrigin(origins = "http://localhost:3000")
 public class LocalizacionController {
 
     private final LocalizacionService localizacionService;

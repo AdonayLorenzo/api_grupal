@@ -15,7 +15,7 @@ import java.util.Optional;
 @RestController
 @RequestMapping("/api/proyectos")
 @Validated // Habilitar validaciones a nivel de clase
-@CrossOrigin(origins = "http://localhost:+6")
+@CrossOrigin(origins = "http://localhost:3000")
 public class ProyectoController {
 
     private final ProyectoService proyectoService;
