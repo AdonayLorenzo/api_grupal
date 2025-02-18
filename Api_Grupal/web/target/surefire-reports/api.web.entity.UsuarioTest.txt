@@ -1,0 +1,85 @@
+-------------------------------------------------------------------------------
+Test set: api.web.entity.UsuarioTest
+-------------------------------------------------------------------------------
+Tests run: 9, Failures: 0, Errors: 9, Skipped: 0, Time elapsed: 0.029 s <<< FAILURE! -- in api.web.entity.UsuarioTest
+api.web.entity.UsuarioTest.testApellidoNoPuedeSerNulo -- Time elapsed: 0.011 s <<< ERROR!
+javax.validation.NoProviderFoundException: Unable to create a Configuration, because no Bean Validation provider could be found. Add a provider like Hibernate Validator (RI) to your classpath.
+	at javax.validation.Validation$GenericBootstrapImpl.configure(Validation.java:291)
+	at javax.validation.Validation.buildDefaultValidatorFactory(Validation.java:103)
+	at api.web.entity.UsuarioTest.setUp(UsuarioTest.java:26)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1597)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1597)
+
+api.web.entity.UsuarioTest.testNombreLongitudMinima -- Time elapsed: 0.002 s <<< ERROR!
+javax.validation.NoProviderFoundException: Unable to create a Configuration, because no Bean Validation provider could be found. Add a provider like Hibernate Validator (RI) to your classpath.
+	at javax.validation.Validation$GenericBootstrapImpl.configure(Validation.java:291)
+	at javax.validation.Validation.buildDefaultValidatorFactory(Validation.java:103)
+	at api.web.entity.UsuarioTest.setUp(UsuarioTest.java:26)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1597)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1597)
+
+api.web.entity.UsuarioTest.testCorreoNoPuedeSerNulo -- Time elapsed: 0.002 s <<< ERROR!
+javax.validation.NoProviderFoundException: Unable to create a Configuration, because no Bean Validation provider could be found. Add a provider like Hibernate Validator (RI) to your classpath.
+	at javax.validation.Validation$GenericBootstrapImpl.configure(Validation.java:291)
+	at javax.validation.Validation.buildDefaultValidatorFactory(Validation.java:103)
+	at api.web.entity.UsuarioTest.setUp(UsuarioTest.java:26)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1597)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1597)
+
+api.web.entity.UsuarioTest.testNombreNoPuedeSerNulo -- Time elapsed: 0.001 s <<< ERROR!
+javax.validation.NoProviderFoundException: Unable to create a Configuration, because no Bean Validation provider could be found. Add a provider like Hibernate Validator (RI) to your classpath.
+	at javax.validation.Validation$GenericBootstrapImpl.configure(Validation.java:291)
+	at javax.validation.Validation.buildDefaultValidatorFactory(Validation.java:103)
+	at api.web.entity.UsuarioTest.setUp(UsuarioTest.java:26)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1597)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1597)
+
+api.web.entity.UsuarioTest.testUsuarioValido -- Time elapsed: 0.001 s <<< ERROR!
+javax.validation.NoProviderFoundException: Unable to create a Configuration, because no Bean Validation provider could be found. Add a provider like Hibernate Validator (RI) to your classpath.
+	at javax.validation.Validation$GenericBootstrapImpl.configure(Validation.java:291)
+	at javax.validation.Validation.buildDefaultValidatorFactory(Validation.java:103)
+	at api.web.entity.UsuarioTest.setUp(UsuarioTest.java:26)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1597)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1597)
+
+api.web.entity.UsuarioTest.testContrasennaLongitudMinima -- Time elapsed: 0.001 s <<< ERROR!
+javax.validation.NoProviderFoundException: Unable to create a Configuration, because no Bean Validation provider could be found. Add a provider like Hibernate Validator (RI) to your classpath.
+	at javax.validation.Validation$GenericBootstrapImpl.configure(Validation.java:291)
+	at javax.validation.Validation.buildDefaultValidatorFactory(Validation.java:103)
+	at api.web.entity.UsuarioTest.setUp(UsuarioTest.java:26)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1597)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1597)
+
+api.web.entity.UsuarioTest.testContrasennaNoPuedeSerNula -- Time elapsed: 0.001 s <<< ERROR!
+javax.validation.NoProviderFoundException: Unable to create a Configuration, because no Bean Validation provider could be found. Add a provider like Hibernate Validator (RI) to your classpath.
+	at javax.validation.Validation$GenericBootstrapImpl.configure(Validation.java:291)
+	at javax.validation.Validation.buildDefaultValidatorFactory(Validation.java:103)
+	at api.web.entity.UsuarioTest.setUp(UsuarioTest.java:26)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1597)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1597)
+
+api.web.entity.UsuarioTest.testCorreoDebeSerValido -- Time elapsed: 0.001 s <<< ERROR!
+javax.validation.NoProviderFoundException: Unable to create a Configuration, because no Bean Validation provider could be found. Add a provider like Hibernate Validator (RI) to your classpath.
+	at javax.validation.Validation$GenericBootstrapImpl.configure(Validation.java:291)
+	at javax.validation.Validation.buildDefaultValidatorFactory(Validation.java:103)
+	at api.web.entity.UsuarioTest.setUp(UsuarioTest.java:26)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1597)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1597)
+
+api.web.entity.UsuarioTest.testFechaNacimientoEsAceptada -- Time elapsed: 0.001 s <<< ERROR!
+javax.validation.NoProviderFoundException: Unable to create a Configuration, because no Bean Validation provider could be found. Add a provider like Hibernate Validator (RI) to your classpath.
+	at javax.validation.Validation$GenericBootstrapImpl.configure(Validation.java:291)
+	at javax.validation.Validation.buildDefaultValidatorFactory(Validation.java:103)
+	at api.web.entity.UsuarioTest.setUp(UsuarioTest.java:26)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:580)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1597)
+	at java.base/java.util.ArrayList.forEach(ArrayList.java:1597)
+
