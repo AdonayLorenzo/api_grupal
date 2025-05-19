@@ -99,6 +99,10 @@ public class Proyecto {
     public List<Storyboard> getStoryboards() {
         return storyboards;
     }
+    public List<Secuencia> getSecuencias() {
+        return secuencias;
+    }
+
     public void setStoryboards(List<Storyboard> storyboards) {
         this.storyboards = storyboards;
     }

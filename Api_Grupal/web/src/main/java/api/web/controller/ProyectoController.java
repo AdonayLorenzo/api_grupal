@@ -1,6 +1,7 @@
 package api.web.controller;
 import api.web.entity.Localizacion;
 import api.web.entity.Proyecto;
+import api.web.entity.Secuencia;
 import api.web.entity.Storyboard;
 import api.web.service.ProyectoService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -42,11 +43,21 @@ public class ProyectoController {
         }
         return null; // O maneja el caso de que el proyecto no exista
     }
+
     @GetMapping("/{id}/storyboards")
     public List<Storyboard> getStoryboards(@PathVariable Long id) {
         Optional<Proyecto> proyecto = proyectoService.obtenerPorId(id);
         if (proyecto != null) {
             return proyecto.get().getStoryboards(); // Retorna la lista de localizaciones
+        }
+        return null; // O maneja el caso de que el proyecto no exista
+    }
+
+    @GetMapping("/{id}/secuencias")
+    public List<Secuencia> getSecuencias(@PathVariable Long id) {
+        Optional<Proyecto> proyecto = proyectoService.obtenerPorId(id);
+        if (proyecto != null) {
+            return proyecto.get().getSecuencias(); // Retorna la lista de localizaciones
         }
         return null; // O maneja el caso de que el proyecto no exista
     }

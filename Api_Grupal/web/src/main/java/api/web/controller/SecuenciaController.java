@@ -1,9 +1,13 @@
 package api.web.controller;
 
+import api.web.entity.Localizacion;
+import api.web.entity.Proyecto;
 import api.web.entity.Secuencia;
 import api.web.service.SecuenciaService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -25,25 +29,40 @@ public class SecuenciaController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<Secuencia> getSecuenciaById(@PathVariable int id) {
+    public ResponseEntity<Secuencia> getSecuenciaById(@PathVariable Long id) {
         Optional<Secuencia> secuencia = secuenciaService.getSecuenciaById(id);
         return secuencia.map(ResponseEntity::ok)
-                        .orElseGet(() -> ResponseEntity.notFound().build());
+                .orElseGet(() -> ResponseEntity.status(HttpStatus.NOT_FOUND).body(null)); // 404 si no existe
     }
 
     @PostMapping
-    public Secuencia createSecuencia(@Valid @RequestBody Secuencia secuencia) {
-        return secuenciaService.saveSecuencia(secuencia);
+    public ResponseEntity<Object>  createSecuencia(@Valid @RequestBody Secuencia secuencia, BindingResult bindingResult) {
+        // Verifica si hubo errores de validación
+
+        try {
+            // Guardar la Localizacion en la base de datos
+            Secuencia secuenciaGuardado = secuenciaService.saveSecuencia(secuencia);
+            return ResponseEntity.status(HttpStatus.CREATED).body(secuenciaGuardado);
+        } catch (Exception e) {
+            // Imprimir el error detallado en la consola
+            System.out.println("Error al crear el proyecto: " + e.getMessage());
+            e.printStackTrace();
+
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR)
+                    .body("Error en el servidor: " + e.getMessage());
+        }
     }
 
+
+
     @PutMapping("/{id}")
-    public ResponseEntity<Secuencia> updateSecuencia(@PathVariable int id, @Valid @RequestBody Secuencia secuencia) {
+    public ResponseEntity<Secuencia> updateSecuencia(@PathVariable Long id, @Valid @RequestBody Secuencia secuencia) {
         Secuencia updated = secuenciaService.updateSecuencia(id, secuencia);
         return ResponseEntity.ok(updated);
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<Void> deleteSecuencia(@PathVariable int id) {
+    public ResponseEntity<Void> deleteSecuencia(@PathVariable Long id) {
         if (secuenciaService.getSecuenciaById(id).isPresent()) {
             secuenciaService.deleteSecuencia(id);
             return ResponseEntity.noContent().build();

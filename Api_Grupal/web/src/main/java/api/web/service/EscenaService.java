@@ -22,6 +22,7 @@ public class EscenaService {
         return escenaRepository.findById(id);
     }
 
+
     public Escena save(Escena escena) {
         return escenaRepository.save(escena);
     }
