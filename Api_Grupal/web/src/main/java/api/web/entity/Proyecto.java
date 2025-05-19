@@ -45,7 +45,7 @@ public class Proyecto {
     @OneToMany(mappedBy = "proyecto")
     @JsonManagedReference // Evita la serialización infinita
     @JsonIgnore
-    public List<Escena> escena;
+    public List<Secuencia> secuencias;
 
     //Getters and Setters
 

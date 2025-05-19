@@ -35,7 +35,7 @@ public class SecuenciaService {
             secuencia.setNombre(updatedSecuencia.getNombre());
             secuencia.setMin_inicio(updatedSecuencia.getMin_inicio());
             secuencia.setMin_final(updatedSecuencia.getMin_final());
-            secuencia.setEscena(updatedSecuencia.getEscena());
+            secuencia.setEscenas(updatedSecuencia.getEscenas());
             return secuenciaRepository.save(secuencia);
         }).orElseGet(() -> {
             updatedSecuencia.setId_secuencia(id);
