@@ -12,10 +12,9 @@ import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 
-
 @Entity
 public class Secuencia {
-    
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     public int id_secuencia;
@@ -31,11 +30,16 @@ public class Secuencia {
     public int min_final;
 
     @ManyToOne
-    @JoinColumn(name = "id_escena" , nullable = false)
-    @JsonBackReference  // Evita la serialización infinita
-    private Escena escena;
+    @JoinColumn(name = "id_proyecto", nullable = false)
+    @JsonBackReference // Evita la serialización infinita
+    private Proyecto proyecto;
 
-    //Getters y Setters
+    @OneToMany(mappedBy = "secuencia")
+    @JsonManagedReference // Evita la serialización infinita
+    @JsonIgnore
+    public List<Escena> escenas;
+
+    // Getters y Setters
     public int getId_secuencia() {
         return id_secuencia;
     }
@@ -68,11 +72,20 @@ public class Secuencia {
         this.min_final = min_final;
     }
 
-    public Escena getEscena() {
-        return escena;
+    public Proyecto getProyecto() {
+        return proyecto;
     }
-    
-    public void setEscena(Escena escena) {
-        this.escena = escena;
+
+    public void setProyecto(Proyecto proyecto) {
+        this.proyecto = proyecto;
     }
+
+    public List<Escena> getEscenas() {
+        return escenas;
+    }
+
+    public void setEscenas(List<Escena> escenas) {
+        this.escenas = escenas;
+    }
+
 }

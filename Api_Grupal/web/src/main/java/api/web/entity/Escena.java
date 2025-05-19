@@ -30,15 +30,9 @@ public class Escena {
     public int min_final;
 
     @ManyToOne
-    @JoinColumn(name = "id_proyecto" , nullable = false)
+    @JoinColumn(name = "id_secuencia" , nullable = false)
     @JsonBackReference  // Evita la serialización infinita
-    private Proyecto proyecto;
-
-    @OneToMany(mappedBy = "escena")
-    @JsonManagedReference // Evita la serialización infinita
-    @JsonIgnore
-    public List<Secuencia> secuencias;
-
+    private Secuencia secuencia;
 
     public int getId_escena() {
         return id_escena;
