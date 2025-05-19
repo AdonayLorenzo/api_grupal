@@ -18,7 +18,7 @@ public class SecuenciaService {
         return secuenciaRepository.findAll();
     }
 
-    public Optional<Secuencia> getSecuenciaById(Long id) {
+    public Optional<Secuencia> getSecuenciaById(int id) {
         return secuenciaRepository.findById(id);
     }
 
@@ -26,11 +26,11 @@ public class SecuenciaService {
         return secuenciaRepository.save(secuencia);
     }
 
-    public void deleteSecuencia(Long id) {
+    public void deleteSecuencia(Integer id) {
         secuenciaRepository.deleteById(id);
     }
 
-    public Secuencia updateSecuencia(Long id, Secuencia updatedSecuencia) {
+    public Secuencia updateSecuencia(int id, Secuencia updatedSecuencia) {
         return secuenciaRepository.findById(id).map(secuencia -> {
             secuencia.setNombre(updatedSecuencia.getNombre());
             secuencia.setMin_inicio(updatedSecuencia.getMin_inicio());

@@ -5,5 +5,5 @@ import org.springframework.stereotype.Repository;
 import api.web.entity.Secuencia;
 
 @Repository
-public interface SecuenciaRepo extends JpaRepository<Secuencia, Long> {
+public interface SecuenciaRepo extends JpaRepository<Secuencia, Integer> {
 }

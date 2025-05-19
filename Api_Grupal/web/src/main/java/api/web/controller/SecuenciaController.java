@@ -1,5 +1,6 @@
 package api.web.controller;
 
+import api.web.entity.Escena;
 import api.web.entity.Localizacion;
 import api.web.entity.Proyecto;
 import api.web.entity.Secuencia;
@@ -29,10 +30,22 @@ public class SecuenciaController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<Secuencia> getSecuenciaById(@PathVariable Long id) {
+    public ResponseEntity<Secuencia> getSecuenciaById(@PathVariable int id) {
         Optional<Secuencia> secuencia = secuenciaService.getSecuenciaById(id);
         return secuencia.map(ResponseEntity::ok)
                 .orElseGet(() -> ResponseEntity.status(HttpStatus.NOT_FOUND).body(null)); // 404 si no existe
+    }
+
+    @GetMapping("/{id}/escenas")
+    public ResponseEntity<List<Escena>> getEscenasBySecuenciaId(@PathVariable int id) {
+        Optional<Secuencia> optionalSecuencia = secuenciaService.getSecuenciaById(id);
+
+        if (optionalSecuencia.isPresent()) {
+            List<Escena> escenas = optionalSecuencia.get().getEscenas();
+            return ResponseEntity.ok(escenas);
+        } else {
+            return ResponseEntity.notFound().build();
+        }
     }
 
     @PostMapping
@@ -56,13 +69,13 @@ public class SecuenciaController {
 
 
     @PutMapping("/{id}")
-    public ResponseEntity<Secuencia> updateSecuencia(@PathVariable Long id, @Valid @RequestBody Secuencia secuencia) {
+    public ResponseEntity<Secuencia> updateSecuencia(@PathVariable int id, @Valid @RequestBody Secuencia secuencia) {
         Secuencia updated = secuenciaService.updateSecuencia(id, secuencia);
         return ResponseEntity.ok(updated);
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<Void> deleteSecuencia(@PathVariable Long id) {
+    public ResponseEntity<Void> deleteSecuencia(@PathVariable int id) {
         if (secuenciaService.getSecuenciaById(id).isPresent()) {
             secuenciaService.deleteSecuencia(id);
             return ResponseEntity.noContent().build();
