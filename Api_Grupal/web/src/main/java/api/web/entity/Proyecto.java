@@ -42,7 +42,10 @@ public class Proyecto {
     @JsonIgnore
     private List<Storyboard> storyboards;
 
-
+    @OneToMany(mappedBy = "proyecto")
+    @JsonManagedReference // Evita la serialización infinita
+    @JsonIgnore
+    public List<Escena> escena;
 
     //Getters and Setters
 
