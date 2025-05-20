@@ -2,13 +2,10 @@ package api.web.entity;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
 
-import javax.validation.constraints.NotBlank;
-
-import java.sql.Blob;
 import java.util.List;
 
 @Entity
@@ -22,34 +19,32 @@ public class Proyecto {
     @Size(min = 3, max = 50, message = "El nombre debe tener entre 3 y 50 caracteres")
     private String nombre;
 
-    @Size(min = 0, max = 255, message = "La descripcion es muy larga")
+    @Size(max = 255, message = "La descripción es muy larga")
     private String descripcion;
 
     @Lob
+    @Basic(fetch = FetchType.LAZY)
     @Column(name = "imagen", columnDefinition = "LONGBLOB")
-    private Blob imagen;
+    private byte[] imagen;
 
     @ManyToOne
-    @JoinColumn(name = "id_usuario" , nullable = false)
-    @JsonBackReference  // Evita la serialización infinita
+    @JoinColumn(name = "id_usuario", nullable = false)
+    @JsonBackReference
     private Usuario usuario;
 
-    @OneToMany(mappedBy = "proyecto")
-    @JsonManagedReference // Evita la serialización infinita
+    @OneToMany(mappedBy = "proyecto", cascade = CascadeType.ALL, orphanRemoval = true)
     @JsonIgnore
     private List<Localizacion> localizaciones;
 
-    @OneToMany(mappedBy = "proyecto")
-    @JsonManagedReference // Evita la serialización infinita
+    @OneToMany(mappedBy = "proyecto", cascade = CascadeType.ALL, orphanRemoval = true)
     @JsonIgnore
     private List<Storyboard> storyboards;
 
-    @OneToMany(mappedBy = "proyecto")
-    @JsonManagedReference // Evita la serialización infinita
+    @OneToMany(mappedBy = "proyecto", cascade = CascadeType.ALL, orphanRemoval = true)
     @JsonIgnore
-    public List<Secuencia> secuencias;
+    private List<Secuencia> secuencias;
 
-    //Getters and Setters
+    // Getters and Setters
 
     public Long getId_proyecto() {
         return id_proyecto;
@@ -59,39 +54,40 @@ public class Proyecto {
         this.id_proyecto = id_proyecto;
     }
 
-    public @NotBlank(message = "El nombre no puede estar vacío") @Size(min = 3, max = 50, message = "El nombre debe tener entre 3 y 50 caracteres") String getNombre() {
+    public String getNombre() {
         return nombre;
     }
 
-    public void setNombre(@NotBlank(message = "El nombre no puede estar vacío") @Size(min = 3, max = 50, message = "El nombre debe tener entre 3 y 50 caracteres") String nombre) {
+    public void setNombre(String nombre) {
         this.nombre = nombre;
     }
 
-    public @Size(min = 0, max = 255, message = "La descripcion es muy larga") String getDescripcion() {
+    public String getDescripcion() {
         return descripcion;
     }
 
-    public void setDescripcion(@Size(min = 0, max = 255, message = "La descripcion es muy larga") String descripcion) {
+    public void setDescripcion(String descripcion) {
         this.descripcion = descripcion;
     }
 
-    public Blob getImagen() {
+    public byte[] getImagen() {
         return imagen;
     }
 
-    public void setImagen(Blob imagen) {
+    public void setImagen(byte[] imagen) {
         this.imagen = imagen;
     }
 
     public Usuario getUsuario() {
         return usuario;
     }
+
     public void setUsuario(Usuario usuario) {
         this.usuario = usuario;
     }
 
     public List<Localizacion> getLocalizaciones() {
-        return this.localizaciones;
+        return localizaciones;
     }
 
     public void setLocalizaciones(List<Localizacion> localizaciones) {
@@ -101,12 +97,16 @@ public class Proyecto {
     public List<Storyboard> getStoryboards() {
         return storyboards;
     }
-    public List<Secuencia> getSecuencias() {
-        return secuencias;
-    }
 
     public void setStoryboards(List<Storyboard> storyboards) {
         this.storyboards = storyboards;
     }
 
+    public List<Secuencia> getSecuencias() {
+        return secuencias;
+    }
+
+    public void setSecuencias(List<Secuencia> secuencias) {
+        this.secuencias = secuencias;
+    }
 }
