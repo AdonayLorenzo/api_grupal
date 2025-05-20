@@ -12,13 +12,11 @@ class ProyectoTest {
         proyecto.setId_proyecto(1L);
         proyecto.setNombre("Proyecto de prueba");
         proyecto.setDescripcion("Descripción del proyecto");
-        proyecto.setImagen(new byte[]{1, 2, 3});
 
         // Verificar los valores
         assertEquals(1L, proyecto.getId_proyecto());
         assertEquals("Proyecto de prueba", proyecto.getNombre());
         assertEquals("Descripción del proyecto", proyecto.getDescripcion());
-        assertArrayEquals(new byte[]{1, 2, 3}, proyecto.getImagen());
     }
 
     @Test

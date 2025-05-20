@@ -7,6 +7,8 @@ import jakarta.persistence.*;
 import jakarta.validation.constraints.Size;
 
 import javax.validation.constraints.NotBlank;
+
+import java.sql.Blob;
 import java.util.List;
 
 @Entity
@@ -25,7 +27,7 @@ public class Proyecto {
 
     @Lob
     @Column(name = "imagen", columnDefinition = "LONGBLOB")
-    private byte[] imagen;
+    private Blob imagen;
 
     @ManyToOne
     @JoinColumn(name = "id_usuario" , nullable = false)
@@ -73,11 +75,11 @@ public class Proyecto {
         this.descripcion = descripcion;
     }
 
-    public byte[] getImagen() {
+    public Blob getImagen() {
         return imagen;
     }
 
-    public void setImagen(byte[] imagen) {
+    public void setImagen(Blob imagen) {
         this.imagen = imagen;
     }
 
