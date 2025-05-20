@@ -33,6 +33,7 @@ public class SecuenciaService {
     public Secuencia updateSecuencia(int id, Secuencia updatedSecuencia) {
         return secuenciaRepository.findById(id).map(secuencia -> {
             secuencia.setNombre(updatedSecuencia.getNombre());
+            secuencia.setColor(updatedSecuencia.getColor());
             secuencia.setMin_inicio(updatedSecuencia.getMin_inicio());
             secuencia.setMin_final(updatedSecuencia.getMin_final());
             secuencia.setEscenas(updatedSecuencia.getEscenas());

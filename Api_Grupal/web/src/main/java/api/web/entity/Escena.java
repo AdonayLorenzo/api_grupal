@@ -23,6 +23,9 @@ public class Escena {
     @Size(min = 3, max = 50, message = "El nombre debe tener entre 3 y 50 caracteres")
     public String nombre;
 
+    @Size(min = 6, max = 6, message = "El color debe tener 6 caracteres")
+    public String color;
+
     @Min(value = 0, message = "El minuto de inicio no puede ser negativo")
     public int min_inicio;
 
@@ -30,8 +33,8 @@ public class Escena {
     public int min_final;
 
     @ManyToOne
-    @JoinColumn(name = "id_secuencia" , nullable = false)
-    @JsonBackReference  // Evita la serialización infinita
+    @JoinColumn(name = "id_secuencia", nullable = false)
+    @JsonBackReference // Evita la serialización infinita
     private Secuencia secuencia;
 
     public int getId_escena() {
@@ -48,6 +51,14 @@ public class Escena {
 
     public void setNombre(String nombre) {
         this.nombre = nombre;
+    }
+
+    public String getColor() {
+        return color;
+    }
+
+    public void setColor(String color) {
+        this.color = color;
     }
 
     public int getMin_inicio() {

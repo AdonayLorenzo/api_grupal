@@ -31,12 +31,18 @@ public class EscenaController {
 
     @PostMapping
     public Escena create(@Valid @RequestBody Escena escena) {
+        if (escena.color == null) {
+            escena.color = "FFFFFF";
+        }
         return escenaService.save(escena);
     }
 
     @PutMapping("/{id}")
     public ResponseEntity<Escena> update(@PathVariable int id, @Valid @RequestBody Escena escena) {
         try {
+            if (escena.color == null) {
+                escena.color = "FFFFFF";
+            }
             return ResponseEntity.ok(escenaService.update(id, escena));
         } catch (RuntimeException e) {
             return ResponseEntity.notFound().build();

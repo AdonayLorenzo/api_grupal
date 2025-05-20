@@ -34,6 +34,7 @@ public class EscenaService {
     public Escena update(int id, Escena escenaDetails) {
         return escenaRepository.findById(id).map(escena -> {
             escena.nombre = escenaDetails.nombre;
+            escena.color = escenaDetails.color;
             escena.min_inicio = escenaDetails.min_inicio;
             escena.min_final = escenaDetails.min_final;
             return escenaRepository.save(escena);

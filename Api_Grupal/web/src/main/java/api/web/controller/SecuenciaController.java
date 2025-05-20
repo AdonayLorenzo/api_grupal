@@ -49,11 +49,15 @@ public class SecuenciaController {
     }
 
     @PostMapping
-    public ResponseEntity<Object>  createSecuencia(@Valid @RequestBody Secuencia secuencia, BindingResult bindingResult) {
+    public ResponseEntity<Object> createSecuencia(@Valid @RequestBody Secuencia secuencia,
+            BindingResult bindingResult) {
         // Verifica si hubo errores de validación
 
         try {
             // Guardar la Localizacion en la base de datos
+            if (secuencia.color == null) {
+                secuencia.color = "FFFFFF";
+            }
             Secuencia secuenciaGuardado = secuenciaService.saveSecuencia(secuencia);
             return ResponseEntity.status(HttpStatus.CREATED).body(secuenciaGuardado);
         } catch (Exception e) {
@@ -66,10 +70,11 @@ public class SecuenciaController {
         }
     }
 
-
-
     @PutMapping("/{id}")
     public ResponseEntity<Secuencia> updateSecuencia(@PathVariable int id, @Valid @RequestBody Secuencia secuencia) {
+        if (secuencia.color == null) {
+            secuencia.color = "FFFFFF";
+        }
         Secuencia updated = secuenciaService.updateSecuencia(id, secuencia);
         return ResponseEntity.ok(updated);
     }
