@@ -21,8 +21,10 @@ public class Localizacion {
     private String descripcion;
 
     @Lob
+    @Basic(fetch = FetchType.LAZY)
     @Column(name = "imagen", columnDefinition = "LONGBLOB")
     private byte[] imagen;
+
 
     @Size(min = 0, max = 255, message = "La descripcion es muy larga")
     private String link_map;
