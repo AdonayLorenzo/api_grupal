@@ -5,6 +5,9 @@ import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.Size;
 import javax.validation.constraints.NotBlank;
 
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
+
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 import java.sql.Date;
@@ -42,6 +45,7 @@ public class Usuario {
     private Date Fecha_N;
 
     @OneToMany(mappedBy = "usuario")
+    @OnDelete(action = OnDeleteAction.CASCADE)
     @JsonManagedReference // Evita la serialización infinita
     private List<Proyecto> proyectos;
 

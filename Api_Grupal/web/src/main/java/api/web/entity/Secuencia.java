@@ -8,6 +8,9 @@ import java.util.List;
 
 import javax.validation.constraints.NotBlank;
 
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
+
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
@@ -38,6 +41,7 @@ public class Secuencia {
     private Proyecto proyecto;
 
     @OneToMany(mappedBy = "secuencia")
+    @OnDelete(action = OnDeleteAction.CASCADE)
     @JsonManagedReference // Evita la serialización infinita
     @JsonIgnore
     public List<Escena> escenas;
